@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Column Sort Example</title>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            th.active {
+                background-color: #609691;
+            }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 10px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        (function () {
+            let interval;
+
+            function tableLoaded() {
+                let $doc = document,
+                    tableHeaders = $doc.querySelectorAll('th');
+
+                if(tableHeaders) {
+                    tableHeaders.forEach((header, index) => {
+                        header.addEventListener('click', function(event) {
+                           // this.classList.add('active');
+                            tableHeaders.forEach(function (th, i) {
+                                if(i === index)
+                                    th.classList.add('active');
+                                else
+                                    th.classList.remove('active');
+                            });
+                        });
+                    });
+
+                    clearInterval( interval );
+                }
+            }
+            interval = setInterval( tableLoaded, 1000 );
+        }());
+    </script>
+
+<!--
+    <script crossorigin src= "https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src= "https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/create-react-class@15/create-react-class.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+-->
+
+    <script src= "/vendor/react.development.js"></script>
+    <script src= "/vendor/react-dom.development.js"></script>
+    <script src="/vendor/create-react-class.js"></script>
+    <script src="/vendor/babel.min.js"></script>
+    <script src="index.js" type="text/babel"></script>
+</body>
+</html> 
